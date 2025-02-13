@@ -8,6 +8,7 @@ class NERModelCNN(nn.Module):
     def __init__(self, pretrained_embeddings, num_classes, dropout=0.2):
         super(NERModelCNN, self).__init__()
         self.name = "cnn"
+        self.num_classes = num_classes
         
         # Load pretrained embeddings
         embedding_size = pretrained_embeddings.shape[1]
@@ -16,24 +17,19 @@ class NERModelCNN(nn.Module):
         self.embed = nn.Embedding.from_pretrained(
             torch.FloatTensor(pretrained_embeddings),
             padding_idx=0,
-            freeze=False  # Allow fine-tuning
+            freeze=False
         )
         
         # CNN parameters
-        Ci = 1
-        Co = 100
-        Ks = [3,4,5]
-        
-        self.convs = nn.ModuleList([nn.Conv2d(Ci, Co, (K, embedding_size)) for K in Ks])
+        self.conv1 = nn.Conv1d(embedding_size, 128, 3, padding=1)
         self.dropout = nn.Dropout(dropout)
-        self.fc1 = nn.Linear(len(Ks) * Co, num_classes)
+        self.fc1 = nn.Linear(128, num_classes)
 
     def forward(self, x):
-        x = self.embed(x)  # (N, W, D)
-        x = x.unsqueeze(1)  # (N, Ci, W, D)
-        x = [F.relu(conv(x)).squeeze(3) for conv in self.convs]
-        x = [F.max_pool1d(i, i.size(2)).squeeze(2) for i in x]
-        x = torch.cat(x, 1)
+        x = self.embed(x)  # (batch, seq_len, embed_dim)
+        x = x.transpose(1, 2)  # (batch, embed_dim, seq_len)
+        x = F.relu(self.conv1(x))  # (batch, hidden_size, seq_len)
+        x = x.transpose(1, 2)  # (batch, seq_len, hidden_size)
         x = self.dropout(x)
-        logit = self.fc1(x)
-        return logit
+        x = self.fc1(x)  # (batch, seq_len, num_classes)
+        return x

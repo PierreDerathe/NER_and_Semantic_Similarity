@@ -95,3 +95,55 @@ Future work could explore:
 - Combining domain-specific and general embeddings
 - Testing on specific medical NLP tasks
 - Evaluating with larger medical corpora
+
+## 7. NER Task Performance Analysis
+
+### 7.1 Model Performance Overview
+
+1. **Class Imbalance Issue**
+- Majority class ('O'): 12,141 samples (79% of dataset)
+- Minority classes: severely underrepresented (e.g., I-DEVI: 1 sample)
+
+2. **Training Evolution**
+- Word2Vec CBOW:
+  * Epoch 1: Shows some learning (f1-score: 0.51)
+  * Epoch 3: Converges to majority class (f1-score: 0.70)
+- Word2Vec Skipgram:
+  * Similar pattern but slightly worse initial performance
+  * Final convergence to majority class prediction
+
+3. **Performance Metrics**
+- Final accuracy (0.79) is misleading due to class imbalance
+- Zero performance on minority classes
+- Perfect recall (1.00) for 'O' class indicates model bias
+
+### 7.2 Key Issues Identified
+
+1. **Severe Class Imbalance**
+- Medical entity tags (B-*, I-*) are underrepresented
+- Model optimizes for majority class ('O')
+
+2. **Model Limitations**
+- Simple CNN architecture struggles with sequence labeling
+- Loss function doesn't account for class weights
+- No specific handling of entity boundaries (B-* vs I-*)
+
+### 7.3 Recommended Improvements
+
+1. **Data-level Solutions**
+- Implement class weighting in loss function
+- Consider data augmentation for minority classes
+- Explore oversampling techniques for medical entities
+
+2. **Model Architecture**
+- Add CRF layer for better sequence modeling
+- Implement attention mechanisms
+- Consider hierarchical classification approach
+
+3. **Training Strategy**
+- Use focal loss or weighted cross-entropy
+- Implement curriculum learning
+- Consider multi-task learning approaches
+
+These results suggest that while word embeddings capture semantic relationships well, additional techniques are needed for effective NER in medical texts.
+

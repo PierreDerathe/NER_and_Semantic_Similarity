@@ -1,0 +1,99 @@
+NER Classification Results with Pre-trained Word2Vec Embeddings : word2vec_cbow_med_train20
+==================================================
+
+Epoch 1/3
+Training Loss: 2.7380
+Classification Report:
+              precision    recall  f1-score   support
+
+      B-ANAT       0.00      0.00      0.00       126
+      B-CHEM       0.04      0.02      0.02       678
+      B-DEVI       0.00      0.00      0.00        48
+      B-DISO       0.00      0.00      0.00       621
+      B-GEOG       0.00      0.00      0.00        21
+      B-LIVB       0.05      0.02      0.02       256
+      B-OBJC       0.02      0.10      0.03        70
+      B-PHEN       0.00      0.00      0.00        19
+      B-PHYS       0.00      0.00      0.00       107
+      B-PROC       0.02      0.00      0.00       390
+      I-ANAT       0.00      0.00      0.00        33
+      I-CHEM       0.03      0.03      0.03       180
+      I-DEVI       0.00      0.00      0.00         1
+      I-DISO       0.03      0.22      0.06       419
+      I-GEOG       0.00      0.00      0.00        11
+      I-LIVB       0.00      0.00      0.00        60
+      I-OBJC       0.00      0.00      0.00         4
+      I-PHEN       0.00      0.00      0.00         3
+      I-PHYS       0.00      0.12      0.00        34
+      I-PROC       0.00      0.00      0.00       117
+           O       0.80      0.54      0.64     12141
+
+    accuracy                           0.43     15339
+   macro avg       0.05      0.05      0.04     15339
+weighted avg       0.63      0.43      0.51     15339
+
+==============================
+Epoch 2/3
+Training Loss: 2.2069
+Classification Report:
+              precision    recall  f1-score   support
+
+      B-ANAT       0.00      0.00      0.00       126
+      B-CHEM       0.00      0.00      0.00       678
+      B-DEVI       0.00      0.00      0.00        48
+      B-DISO       0.00      0.00      0.00       621
+      B-GEOG       0.00      0.00      0.00        21
+      B-LIVB       0.00      0.00      0.00       256
+      B-OBJC       0.00      0.00      0.00        70
+      B-PHEN       0.00      0.00      0.00        19
+      B-PHYS       0.00      0.00      0.00       107
+      B-PROC       0.00      0.00      0.00       390
+      I-ANAT       0.00      0.00      0.00        33
+      I-CHEM       0.00      0.00      0.00       180
+      I-DEVI       0.00      0.00      0.00         1
+      I-DISO       0.03      0.00      0.01       419
+      I-GEOG       0.00      0.00      0.00        11
+      I-LIVB       0.00      0.00      0.00        60
+      I-OBJC       0.00      0.00      0.00         4
+      I-PHEN       0.00      0.00      0.00         3
+      I-PHYS       0.00      0.00      0.00        34
+      I-PROC       0.00      0.00      0.00       117
+           O       0.79      1.00      0.88     12141
+
+    accuracy                           0.79     15339
+   macro avg       0.04      0.05      0.04     15339
+weighted avg       0.63      0.79      0.70     15339
+
+==============================
+Epoch 3/3
+Training Loss: 1.6801
+Classification Report:
+              precision    recall  f1-score   support
+
+      B-ANAT       0.00      0.00      0.00       126
+      B-CHEM       0.00      0.00      0.00       678
+      B-DEVI       0.00      0.00      0.00        48
+      B-DISO       0.00      0.00      0.00       621
+      B-GEOG       0.00      0.00      0.00        21
+      B-LIVB       0.00      0.00      0.00       256
+      B-OBJC       0.00      0.00      0.00        70
+      B-PHEN       0.00      0.00      0.00        19
+      B-PHYS       0.00      0.00      0.00       107
+      B-PROC       0.00      0.00      0.00       390
+      I-ANAT       0.00      0.00      0.00        33
+      I-CHEM       0.00      0.00      0.00       180
+      I-DEVI       0.00      0.00      0.00         1
+      I-DISO       0.00      0.00      0.00       419
+      I-GEOG       0.00      0.00      0.00        11
+      I-LIVB       0.00      0.00      0.00        60
+      I-OBJC       0.00      0.00      0.00         4
+      I-PHEN       0.00      0.00      0.00         3
+      I-PHYS       0.00      0.00      0.00        34
+      I-PROC       0.00      0.00      0.00       117
+           O       0.79      1.00      0.88     12141
+
+    accuracy                           0.79     15339
+   macro avg       0.04      0.05      0.04     15339
+weighted avg       0.63      0.79      0.70     15339
+
+==============================

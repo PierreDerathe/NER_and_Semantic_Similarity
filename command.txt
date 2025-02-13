@@ -35,5 +35,5 @@ python train_ner_cnn.py \
     --test QUAERO_FrenchMed/EMEA/EMEAtest_layer1_ID.conll  \
     --epochs 1
 
-# Last command sould be the most interesting
+# Last command should be the most interesting
 python train_ner_with_embeddings.py --embeddings model/word2vec_cbow_med_train20.model --epochs 1
