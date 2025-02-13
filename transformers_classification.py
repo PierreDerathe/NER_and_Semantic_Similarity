@@ -7,7 +7,7 @@ from sklearn import metrics
 from sklearn.metrics import f1_score, roc_auc_score, accuracy_score, precision_score, recall_score, classification_report
 import transformers
 from torch.utils.data import Dataset, DataLoader, RandomSampler, SequentialSampler
-from transformers import TrainingArguments, AutoTokenizer, EvalPrediction, AutoModelForSequenceClassification, Trainer
+from transformers import TrainingArguments, AutoTokenizer, EvalPrediction, AutoModelForTokenClassification, Trainer
 import sys
 import os
 import argparse
@@ -175,7 +175,7 @@ if type(data_test["label"][0]) == list:
 print(data_test["review"][0])
 print(data_test["label"][0])
 
-model = AutoModelForSequenceClassification.from_pretrained(bert_model, num_labels=nb_labels)
+model = AutoModelForTokenClassification.from_pretrained(bert_model, num_labels=nb_labels)
 for name, param in model.named_parameters():
     print(name, param.requires_grad)
 

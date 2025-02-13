@@ -1,0 +1,39 @@
+# Create new conda environment named 'chatbot'
+conda create -n chatbot python=3.8
+
+# Activate the environment
+conda activate chatbot
+
+# Install requirements
+pip install -r requirements.txt
+
+# Command above doesn't work for me
+
+# Command example for each file below
+# Couldn't be tested
+# Last command sould be the most interesting
+python transformers_classification.py \
+    --model "camembert-base" \
+    --train "path/to/train.csv" \
+    --test "path/to/test.csv" \
+    --valid "path/to/valid.csv" \
+    --epochs 1 \
+    --batch 8 \
+    --max_len 128 \
+    --lr 1e-5
+
+python cnn_classification.py \
+    --model "cnn" \  # or "lstm"
+    --train "path/to/train.csv" \
+    --valid "path/to/valid.csv" \
+    --test "path/to/test.csv" \
+    --epochs 1
+
+python train_ner_cnn.py \
+    --train QUAERO_FrenchMed/EMEA/EMEAtrain_layer1_ID.conll  \
+    --valid QUAERO_FrenchMed/EMEA/EMEAdev_layer1_ID.conll  \
+    --test QUAERO_FrenchMed/EMEA/EMEAtest_layer1_ID.conll  \
+    --epochs 1
+
+# Last command sould be the most interesting
+python train_ner_with_embeddings.py --embeddings model/word2vec_cbow_med_train20.model --epochs 1
